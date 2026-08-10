@@ -1,0 +1,16 @@
+generated: '2026-08-09'
+method: generated
+source: mcp/code-biotherapeutics-mcp-tools-list.json
+grounded_in: MCP tools/list (live, anonymous, 2026-08-09) — no OpenAPI exists for this provider
+skills:
+- name: code-biotherapeutics-site-lookup
+  file: skills/code-biotherapeutics-site-lookup.md
+  api: Code Bio Site MCP Server
+  endpoint: https://www.codebiotx.com/_api/mcp
+  description: >-
+    Answer company, platform, pipeline, leadership and news questions about Code
+    Biotherapeutics by calling its own site MCP server rather than scraping the website.
+  operations:
+  - GetBusinessDetails
+  - SearchInSite
+  - GenerateVisitorToken
