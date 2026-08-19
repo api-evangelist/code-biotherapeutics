@@ -9,21 +9,18 @@ advertised_in: https://www.codebiotx.com/llms.txt
 platform: Wix Site MCP (platform-provided, served from the provider's own host)
 platform_docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
 first_party: partial
-first_party_note: >-
-  The endpoint is served from the company's own apex host (www.codebiotx.com) and is
-  advertised in the company's own llms.txt, but the server implementation and its tool
-  surface are provided by the Wix website platform rather than authored by Code
-  Biotherapeutics. The site content it exposes is the company's.
+first_party_note: The endpoint is served from the company's own apex host (www.codebiotx.com) and is advertised
+  in the company's own llms.txt, but the server implementation and its tool surface are provided by the
+  Wix website platform rather than authored by Code Biotherapeutics. The site content it exposes is the
+  company's.
 authentication:
   discovery: none
   tools_list: anonymous
-  note: >-
-    tools/list and initialize require no credentials. Two tools (CallWixSiteAPI,
-    ExecuteWixAPI) require a visitorToken minted anonymously by GenerateVisitorToken.
-    No OAuth metadata is published: /.well-known/oauth-authorization-server and
-    /.well-known/oauth-protected-resource both miss on this host.
+  note: 'tools/list and initialize require no credentials. Two tools (CallWixSiteAPI, ExecuteWixAPI) require
+    a visitorToken minted anonymously by GenerateVisitorToken. No OAuth metadata is published: /.well-known/oauth-authorization-server
+    and /.well-known/oauth-protected-resource both miss on this host.'
 server_info:
-  name: 'Site Visitor Assistant for site "Code Bio Live Site" (https://www.codebiotx.com/_api/mcp)'
+  name: Site Visitor Assistant for site "Code Bio Live Site" (https://www.codebiotx.com/_api/mcp)
   version: 1.0.0
   protocolVersion: '2025-06-18'
   capabilities:
@@ -43,8 +40,7 @@ tools:
   - searchTerm
   mutating: false
 - name: SearchSiteApiDocs
-  description: >-
-    Returns the API documentation for the Wix business solutions installed on this site and
+  description: Returns the API documentation for the Wix business solutions installed on this site and
     how to call them.
   required:
   - searchTerm
@@ -70,16 +66,14 @@ tools:
   required: []
   mutating: false
 - name: CallWixSiteAPI
-  description: >-
-    Calls a Wix REST API method on the visitor's behalf against this site.
+  description: Calls a Wix REST API method on the visitor's behalf against this site.
   required:
   - visitorToken
   - url
   - method
   mutating: true
 - name: ExecuteWixAPI
-  description: >-
-    Runs JavaScript against the Wix REST API for this site in a sandbox, on the visitor's behalf.
+  description: Runs JavaScript against the Wix REST API for this site in a sandbox, on the visitor's behalf.
   required:
   - code
   - reason
@@ -87,9 +81,8 @@ tools:
   - sourceDocUrls
   - visitorToken
   mutating: true
-scope_note: >-
-  This is a website-content and site-commerce agent surface. It exposes no scientific,
-  pipeline, clinical or 3DNA platform data — Code Biotherapeutics publishes no such API.
+scope_note: This is a website-content and site-commerce agent surface. It exposes no scientific, pipeline,
+  clinical or 3DNA platform data — Code Biotherapeutics publishes no such API.
 x-evidence:
   fetched: '2026-08-09'
   probes:
@@ -101,7 +94,7 @@ x-evidence:
   - url: https://www.codebiotx.com/_api/mcp
     method: POST initialize
     http_status: 200
-    result: 'protocolVersion 2025-06-18; capabilities.tools.listChanged true'
+    result: protocolVersion 2025-06-18; capabilities.tools.listChanged true
   - url: https://www.codebiotx.com/_api/mcp
     method: POST tools/call GetBusinessDetails
     http_status: 200
@@ -110,3 +103,9 @@ x-evidence:
     method: GET
     http_status: 200
     result: advertises the MCP endpoint and the tool list
+deployment:
+  mode: remote
+  verified: searched
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
