@@ -77,6 +77,9 @@ apis:
     url: conformance/code-biotherapeutics-conformance.yml
   - type: AgentSkill
     url: skills/_index.yml
+  x-surface: platform-generated
+  x-platform: wix
+  x-platform-surface: site-mcp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
